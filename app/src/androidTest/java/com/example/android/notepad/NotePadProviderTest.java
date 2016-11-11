@@ -45,8 +45,7 @@ import java.util.GregorianCalendar;
 public class NotePadProviderTest extends ProviderTestCase2<NotePadProvider> {
 
     // A URI that the provider does not offer, for testing error handling.
-    private static final Uri INVALID_URI =
-        Uri.withAppendedPath(NotePad.Notes.CONTENT_URI, "invalid");
+    private static final Uri INVALID_URI = Uri.withAppendedPath(NotePad.Notes.CONTENT_URI, "invalid");
 
     // Contains a reference to the mocked content resolver for the provider under test.
     private MockContentResolver mMockResolver;
