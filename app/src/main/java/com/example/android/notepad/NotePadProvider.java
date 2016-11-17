@@ -16,15 +16,13 @@
 
 package com.example.android.notepad;
 
-import com.example.android.notepad.NotePad;
-
 import android.content.ClipDescription;
 import android.content.ContentProvider;
+import android.content.ContentProvider.PipeDataWriter;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
-import android.content.ContentProvider.PipeDataWriter;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -148,13 +146,10 @@ public class NotePadProvider extends ContentProvider implements PipeDataWriter<C
         sNotesProjectionMap.put(NotePad.Notes.COLUMN_NAME_NOTE, NotePad.Notes.COLUMN_NAME_NOTE);
 
         // Maps "created" to "created"
-        sNotesProjectionMap.put(NotePad.Notes.COLUMN_NAME_CREATE_DATE,
-                NotePad.Notes.COLUMN_NAME_CREATE_DATE);
+        sNotesProjectionMap.put(NotePad.Notes.COLUMN_NAME_CREATE_DATE, NotePad.Notes.COLUMN_NAME_CREATE_DATE);
 
         // Maps "modified" to "modified"
-        sNotesProjectionMap.put(
-                NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE,
-                NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE);
+        sNotesProjectionMap.put(NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE, NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE);
 
         /*
          * Creates an initializes a projection map for handling Live Folders
@@ -167,8 +162,7 @@ public class NotePadProvider extends ContentProvider implements PipeDataWriter<C
         sLiveFolderProjectionMap.put(LiveFolders._ID, NotePad.Notes._ID + " AS " + LiveFolders._ID);
 
         // Maps "NAME" to "title AS NAME"
-        sLiveFolderProjectionMap.put(LiveFolders.NAME, NotePad.Notes.COLUMN_NAME_TITLE + " AS " +
-            LiveFolders.NAME);
+        sLiveFolderProjectionMap.put(LiveFolders.NAME, NotePad.Notes.COLUMN_NAME_TITLE + " AS " + LiveFolders.NAME);
     }
 
     /**
@@ -179,15 +173,13 @@ public class NotePadProvider extends ContentProvider implements PipeDataWriter<C
    static class DatabaseHelper extends SQLiteOpenHelper {
 
        DatabaseHelper(Context context) {
-
            // calls the super constructor, requesting the default cursor factory.
            super(context, DATABASE_NAME, null, DATABASE_VERSION);
        }
 
        /**
         *
-        * Creates the underlying database with table name and column names taken from the
-        * NotePad class.
+        * Creates the underlying database with table name and column names taken from the NotePad class.
         */
        @Override
        public void onCreate(SQLiteDatabase db) {
@@ -410,8 +402,7 @@ public class NotePadProvider extends ContentProvider implements PipeDataWriter<C
      * @throws FileNotFoundException if there is no file associated with the incoming URI.
      */
     @Override
-    public AssetFileDescriptor openTypedAssetFile(Uri uri, String mimeTypeFilter, Bundle opts)
-            throws FileNotFoundException {
+    public AssetFileDescriptor openTypedAssetFile(Uri uri, String mimeTypeFilter, Bundle opts) throws FileNotFoundException {
 
         // Checks to see if the MIME type filter matches a supported MIME type.
         String[] mimeTypes = getStreamTypes(uri, mimeTypeFilter);
